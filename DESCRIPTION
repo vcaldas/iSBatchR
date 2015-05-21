@@ -1,0 +1,11 @@
+Package: isbatchr
+Type: Package
+Title: analysis of iSBatch generated data.
+Version: 0.1
+Date: 2015-05-21
+Author: Victor Caldas
+Maintainer: Victor Caldas <v.e.a.caldas@rug.nl>
+Description: iSBatch analysis
+License: MIT
+URL: https://github.com/vcaldas/iSBatchR
+BugReports: https://github.com/vcaldas/iSBatchR/issues
