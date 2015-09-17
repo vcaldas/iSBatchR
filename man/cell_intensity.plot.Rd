@@ -2,7 +2,7 @@
 % Please edit documentation in R/cell-statistics.R
 \name{cell_intensity.plot}
 \alias{cell_intensity.plot}
-\title{cell statistics}
+\title{cell plots}
 \usage{
 cell_intensity.plot(data, kernel = TRUE, sample.name = NULL, hide = FALSE,
   graphTitle = "Cell intensity distribution")

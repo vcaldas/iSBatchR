@@ -1,4 +1,4 @@
-#' cell statistics
+#' cell plots
 #'
 #' Basic plot of cell intensity distribution
 #' @param data frame
@@ -91,6 +91,16 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 }
 
 
+#' Cell multiplot
+#'
+#' Basic plot of cell intensity distribution
+#' @param vector with directories
+#' @keywords cell
+#' @export
+#' @examples
+#' cell_intensity.multiplot()
+
+
 
 cell_intensity.multiplot <- function(samples = batch.samples){
     library(grid)
@@ -101,11 +111,11 @@ cell_intensity.multiplot <- function(samples = batch.samples){
              print(i)
              current.data   <- mergeSample(samples[i],tableName = "514_Cellintensity" )
              currentName    <- basename(samples[i]);
-             current.plot   <- cell_intensity.plot(current.data, sample.name = currentName, hide = TRUE)
+             current.plot   <- cell_intensity.plot(current.data, sample.name = currentName, hide = TRUE, graphTitle = "")
              my.multiplot[[i]]   <- current.plot
          }
          
-         multiplot(plotlist = my.multiplot, cols= 4)
+         multiplot(plotlist = my.multiplot, cols= 6)
 
 
 }
