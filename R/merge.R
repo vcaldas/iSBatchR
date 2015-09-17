@@ -1,10 +1,21 @@
-
+#' Merge tools
 getListOfTables <- function(sampleDir){
   fovs <- list.dirs(sampleDir, recursive = FALSE);
 }
 
 
-merge.sample <- function(sample, tableName = NULL){
+
+#' Merge tables in Samples
+#'
+#' This function returns a single data frame containing data from all indicated tables.
+#' @param Sample folder path
+#' @keywords sample
+#' @export
+#' @examples
+#' mergeSample()
+
+
+mergeSample <- function(sample = ".", tableName = NULL){
   # Get fields of View list in a sample
   fovs <- list.dirs(sample, recursive = FALSE);
 
@@ -15,27 +26,27 @@ merge.sample <- function(sample, tableName = NULL){
     mypattern <- paste(currentFov, tableName, sep = "/")
     mypattern <- paste(mypattern, ".csv", sep = "")
 
-     if(!exists("dataset")){
+     if(!exists("dataset") && file.exists(mypattern)){
        dataset <- read.csv(mypattern, header = TRUE, sep = ",");
      } 
      
     else{
-      temp_dataset <- read.csv(mypattern, header = TRUE, sep = ",");
-       dataset <- rbind(dataset, temp_dataset)
-       rm(temp_dataset)
+    if(file.exists(mypattern)){
+        temp_dataset <- read.csv(mypattern, header = TRUE, sep = ",");
+        dataset <- rbind(dataset, temp_dataset)
+        rm(temp_dataset)
+    }
+    
      }
   }
 
   return(dataset)
-
 }
 
-multimerge <- function(samplePath){
-  filenames <- list.files(path=samplePath, full.names=TRUE, )
-  
-  datalist <- lapply(filenames, function(x){read.csv(file=x,header=T)})
-  
-  Reduce(function(x,y) {merge(x,y)}, datalist)
-  
-  
+multi_mergeSample <- function(sample = ".", tableName = NULL){
+    
+    
+    
+    
+    
 }
